@@ -15,6 +15,7 @@ RUN \
  echo "**** install runtime packages ****" && \
  apk add --no-cache --upgrade \
 	curl \
+	alpine-sdk \
 	fail2ban \
 	gnupg \
 	memcached \
@@ -65,7 +66,6 @@ RUN \
 	php7-xmlreader \
 	php7-zip \
 	py3-cryptography \
-	py3-pycryptodome \
 	py3-future \
 	py3-pip && \
  echo "**** install certbot plugins ****" && \
@@ -115,7 +115,8 @@ RUN \
 	; done && \
  rm -rf \
 	/tmp/* \
-	/root/.cache
+	/root/.cache && \
+apk del alpine-sdk
 
 # add local files
 COPY root/ /
