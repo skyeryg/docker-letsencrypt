@@ -15,6 +15,7 @@ RUN \
  echo "**** install runtime packages ****" && \
  apk add --no-cache --upgrade \
 	curl \
+	alpine-sdk \
 	fail2ban \
 	gnupg \
 	memcached \
@@ -88,8 +89,7 @@ RUN \
 	certbot-dns-ovh \
 	certbot-dns-rfc2136 \
 	certbot-dns-route53 \
-	certbot-dns-aliyundns \
-	requests && \
+	certbot-dns-aliyundns && \
  echo "**** remove unnecessary fail2ban filters ****" && \
  rm \
 	/etc/fail2ban/jail.d/alpine-ssh.conf && \
@@ -114,7 +114,8 @@ RUN \
 	; done && \
  rm -rf \
 	/tmp/* \
-	/root/.cache
+	/root/.cache && \
+apk del alpine-sdk
 
 # add local files
 COPY root/ /

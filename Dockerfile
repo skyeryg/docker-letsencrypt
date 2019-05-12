@@ -89,8 +89,7 @@ RUN \
 	certbot-dns-ovh \
 	certbot-dns-rfc2136 \
 	certbot-dns-route53 \
-	certbot-dns-aliyundns \
-	requests && \
+	certbot-dns-aliyundns && \
  echo "**** remove unnecessary fail2ban filters ****" && \
  rm \
 	/etc/fail2ban/jail.d/alpine-ssh.conf && \
